@@ -50,8 +50,8 @@ au BufNewFile,BufRead *.py,*.java,*.cpp,*.c,*.cs,*.rkt,*.h,*.html
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
     \ set textwidth=120 |
-    \ set expandtab |
-    \ set autoindent |
+""    \ set expandtab |
+""    \ set autoindent |
     \ set fileformat=unix |
 
 set encoding=utf-8
@@ -90,7 +90,7 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-highlight Comment cterm=italic gui=italic
+"highlight Comment cterm=italic gui=italic
 
 set laststatus=2
 " set showtabline=2
@@ -117,22 +117,29 @@ set showcmd
 set noswapfile " doesn't create swap files
 set noshowmode
 set shortmess+=c
-set omnifunc=syntaxcomplete#Complete
+"set omnifunc=syntaxcomplete#Complete
 set scrolloff=8
-set ttimeoutlen=10
 
 set backspace=indent,eol,start " let backspace delete over lines
 set autoindent " enable auto indentation of lines
 set smartindent " allow vim to best-effort guess the indentation
-set pastetoggle=<F2> " enable paste mode
+set pastetoggle=<leader>p " enable paste mode
 
 set wildmenu "graphical auto complete menu
 set lazyredraw "redraws the screne when it needs to
-set showmatch "highlights matching brackets
+"set showmatch "highlights matching brackets
 set incsearch "search as characters are entered
 set hlsearch "highlights matching searches
 
+
+"terminal
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-c> <C-\><C-n>
+
 "clears highlights
+
+nnoremap <leader>q :bd!<return>
+
 nnoremap // :noh<return>
 " moves current line down or up
 nnoremap <leader>- ddp
@@ -158,7 +165,7 @@ augroup compileandrun
     autocmd filetype python nnoremap <buffer> <leader>r :w <bar> :vsp <bar> :te python % <cr>
     autocmd filetype cpp nnoremap <buffer> <leader>r :w <bar> !g++ -std=c++11 % <cr> :vnew <bar> :te "a.exe" <cr><cr>
     autocmd filetype cpp nnoremap <buffer> <leader>l :vnew <bar> :te "a.exe" <cr>
-    autocmd filetype c nnoremap <buffer> <leader>r :w <bar> !make %:r && %:r <cr>
+    autocmd filetype c nnoremap <buffer> <leader>r :w <bar> !gcc % <cr> :vnew <bar> :te "a.exe" <cr><cr>
     autocmd filetype java nnoremap <buffer> <leader>r :w <bar> !javac % && java %:r <cr>
     autocmd filetype rust nnoremap <buffer> <leader>r :w <bar> !rustc % <cr> :vsp <bar> :te %:r.exe <cr><cr>
 augroup END
