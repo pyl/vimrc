@@ -4,8 +4,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
-Plug 'Raimondi/delimitMate'
-Plug 'vim-airline/vim-airline'
+"Plug 'Raimondi/delimitMate'
+"Plug 'vim-airline/vim-airline'
 Plug 'vim-syntastic/syntastic'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline-themes'
@@ -14,6 +14,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'ervandew/supertab'
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'rust-lang/rust.vim'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
 
 filetype plugin on
@@ -60,7 +61,8 @@ syntax on
 
 " air-line
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'jellybeans'
+"let g:airline_theme = 'gruvbox'
+"let g:airline_theme = 'jellybeans'
 let g:airline#extensions#tabline#enabled = 1
 
 if !exists('g:airline_symbols')
@@ -107,11 +109,14 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme jellybeans
+let ayucolor="light"
+"colorscheme onehalflight
+colorscheme gruvbox
+"colorscheme jellybeans
 
 set hidden
 set nu rnu " relative line numbering
-set clipboard=unnamed " public copy/paste register
+set clipboard^=unnamed,unnamedplus " public copy/paste register
 set ruler
 set showcmd
 set noswapfile " doesn't create swap files
